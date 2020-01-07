@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
-http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
 	<key id="p_i" for="node" attr.name="participation index" attr.type="double">
 		<default>0.0</default>
 	</key>
@@ -15,792 +12,926 @@ http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
 	<key id="l_h" for="node" attr.name="local hubness" attr.type="double">
 		<default>0.0</default>
 	</key>
+	<key id="comm" for="node" attr.name="community" attr.type="int">
+		<default>1</default>
+	</key>
 <graph id="G" edgedefault="directed">
 	<node id="11">
 		<data key="p_i">0.260253</data>
 		<data key="d_i">0.33711</data>
 		<data key="g_h">-1.43139</data>
-		<data key="l_h">0</data>
+		<data key="l_h">3.47851</data>
+		<data key="comm">1</data>
 	</node>
 	<node id="0">
 		<data key="p_i">0.162829</data>
 		<data key="d_i">0.333333</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.316228</data>
+		<data key="comm">1</data>
 	</node>
 	<node id="26">
 		<data key="p_i">0.551454</data>
 		<data key="d_i">0.89511</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.858395</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="69">
 		<data key="p_i">0.480961</data>
 		<data key="d_i">0.61015</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">4</data>
+		<data key="comm">3</data>
 	</node>
 	<node id="71">
 		<data key="p_i">0.669292</data>
 		<data key="d_i">0.765823</data>
 		<data key="g_h">2.86512</data>
-		<data key="l_h">0</data>
+		<data key="l_h">6.65833</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="83">
 		<data key="p_i">0.40022</data>
 		<data key="d_i">0.671055</data>
 		<data key="g_h">-1.43139</data>
-		<data key="l_h">0</data>
+		<data key="l_h">0.241788</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="114">
 		<data key="p_i">0.130686</data>
 		<data key="d_i">0.26087</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.316228</data>
+		<data key="comm">1</data>
 	</node>
 	<node id="12">
 		<data key="p_i">0.137507</data>
 		<data key="d_i">0.275862</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.241788</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="1">
 		<data key="p_i">0.137507</data>
 		<data key="d_i">0.275862</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.241788</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="19">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="27">
 		<data key="p_i">0.209077</data>
 		<data key="d_i">0.308293</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.39423</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="44">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="72">
 		<data key="p_i">0.537212</data>
 		<data key="d_i">0.835468</data>
 		<data key="g_h">3.17201</data>
-		<data key="l_h">0</data>
+		<data key="l_h">7.13392</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="112">
 		<data key="p_i">0.58533</data>
 		<data key="d_i">0.802841</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">0.933564</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="115">
 		<data key="p_i">0.190442</data>
 		<data key="d_i">0.4</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.51807</data>
+		<data key="comm">8</data>
 	</node>
 	<node id="126">
 		<data key="p_i">0.299847</data>
 		<data key="d_i">0.769231</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.500492</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="6">
 		<data key="p_i">0.476278</data>
 		<data key="d_i">0.681417</data>
 		<data key="g_h">-0.817601</data>
-		<data key="l_h">0</data>
+		<data key="l_h">4.59619</data>
+		<data key="comm">9</data>
 	</node>
 	<node id="2">
 		<data key="p_i">0.27011</data>
 		<data key="d_i">0.636364</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-3.00438</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="8">
 		<data key="p_i">0.59712</data>
 		<data key="d_i">0.741976</data>
 		<data key="g_h">1.33065</data>
-		<data key="l_h">0</data>
+		<data key="l_h">7.60188</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="13">
 		<data key="p_i">2.22045e-16</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-3.54088</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="15">
 		<data key="p_i">0.5065</data>
 		<data key="d_i">0.748141</data>
 		<data key="g_h">-1.12449</data>
-		<data key="l_h">0</data>
+		<data key="l_h">0.725365</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="18">
 		<data key="p_i">2.22045e-16</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-3.54088</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="28">
 		<data key="p_i">0.417329</data>
 		<data key="d_i">0.573099</data>
 		<data key="g_h">2.25133</data>
-		<data key="l_h">0</data>
+		<data key="l_h">6.11606</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="29">
 		<data key="p_i">0.608926</data>
 		<data key="d_i">0.763078</data>
 		<data key="g_h">1.63755</data>
-		<data key="l_h">0</data>
+		<data key="l_h">5.04307</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="30">
 		<data key="p_i">0.62039</data>
 		<data key="d_i">0.784855</data>
 		<data key="g_h">1.02376</data>
-		<data key="l_h">0</data>
+		<data key="l_h">3.97008</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="32">
 		<data key="p_i">0.277942</data>
 		<data key="d_i">0.666667</data>
 		<data key="g_h">-0.510708</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.28759</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="33">
 		<data key="p_i">0.243171</data>
 		<data key="d_i">0.545455</data>
 		<data key="g_h">0.103079</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.36059</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="38">
 		<data key="p_i">0.434458</data>
 		<data key="d_i">0.770584</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.725365</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="39">
 		<data key="p_i">0.22789</data>
 		<data key="d_i">0.5</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.725365</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="43">
 		<data key="p_i">0.251375</data>
 		<data key="d_i">0.571429</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.26491</data>
+		<data key="comm">1</data>
 	</node>
 	<node id="81">
 		<data key="p_i">0.589796</data>
 		<data key="d_i">0.729422</data>
 		<data key="g_h">0.103079</data>
-		<data key="l_h">0</data>
+		<data key="l_h">6.63132</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="116">
 		<data key="p_i">0.559166</data>
 		<data key="d_i">0.745338</data>
 		<data key="g_h">1.02376</data>
-		<data key="l_h">0</data>
+		<data key="l_h">3.80476</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="7">
 		<data key="p_i">0.315759</data>
 		<data key="d_i">0.888889</data>
 		<data key="g_h">-0.817601</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.20894</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="3">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="31">
 		<data key="p_i">0.570781</data>
 		<data key="d_i">0.769516</data>
 		<data key="g_h">1.33065</data>
-		<data key="l_h">0</data>
+		<data key="l_h">4.50657</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="37">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="46">
 		<data key="p_i">0.448795</data>
 		<data key="d_i">0.825844</data>
 		<data key="g_h">-1.43139</data>
-		<data key="l_h">0</data>
+		<data key="l_h">0.241788</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="66">
 		<data key="p_i">0.518054</data>
 		<data key="d_i">0.777561</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.500492</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="75">
 		<data key="p_i">0.47815</data>
 		<data key="d_i">0.685243</data>
 		<data key="g_h">-0.817601</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.93406</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="76">
 		<data key="p_i">0.44359</data>
 		<data key="d_i">0.618936</data>
 		<data key="g_h">0.103079</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.18072</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="10">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.17851</data>
+		<data key="comm">9</data>
 	</node>
 	<node id="4">
 		<data key="p_i">0.412316</data>
 		<data key="d_i">0.703019</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.353553</data>
+		<data key="comm">9</data>
 	</node>
 	<node id="5">
 		<data key="p_i">0.162829</data>
 		<data key="d_i">0.333333</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="16">
 		<data key="p_i">0.318293</data>
 		<data key="d_i">0.923077</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.17851</data>
+		<data key="comm">9</data>
 	</node>
 	<node id="24">
 		<data key="p_i">0.326381</data>
 		<data key="d_i">0.51095</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.29636</data>
+		<data key="comm">9</data>
 	</node>
 	<node id="42">
 		<data key="p_i">0.162829</data>
 		<data key="d_i">0.333333</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="34">
 		<data key="p_i">0.612151</data>
 		<data key="d_i">0.769061</data>
 		<data key="g_h">2.25133</data>
-		<data key="l_h">0</data>
+		<data key="l_h">6.11606</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="73">
 		<data key="p_i">0.664241</data>
 		<data key="d_i">0.758314</data>
 		<data key="g_h">0.409972</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.89708</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="79">
 		<data key="p_i">0.410425</data>
 		<data key="d_i">0.561519</data>
 		<data key="g_h">-1.12449</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.26723</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="80">
 		<data key="p_i">0.314215</data>
 		<data key="d_i">0.487941</data>
 		<data key="g_h">-1.12449</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.26723</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="100">
 		<data key="p_i">0.403648</data>
 		<data key="d_i">0.679855</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.06693</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="9">
 		<data key="p_i">1</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.57964</data>
-		<data key="l_h">-inf</data>
+		<data key="l_h">0</data>
+		<data key="comm">11</data>
 	</node>
 	<node id="14">
 		<data key="p_i">0.386008</data>
 		<data key="d_i">0.636364</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.241788</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="17">
 		<data key="p_i">0.157865</data>
 		<data key="d_i">0.228674</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="47">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">inf</data>
+		<data key="l_h">0</data>
+		<data key="comm">11</data>
 	</node>
 	<node id="74">
 		<data key="p_i">0.266135</data>
 		<data key="d_i">0.402273</data>
 		<data key="g_h">-0.510708</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.28698</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="48">
 		<data key="p_i">0.441172</data>
 		<data key="d_i">0.550818</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.39489</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="77">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.00347</data>
+		<data key="comm">9</data>
 	</node>
 	<node id="20">
 		<data key="p_i">2.22045e-16</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.21359</data>
+		<data key="comm">1</data>
 	</node>
 	<node id="35">
 		<data key="p_i">0.684567</data>
 		<data key="d_i">0.78937</data>
 		<data key="g_h">2.55823</data>
-		<data key="l_h">0</data>
+		<data key="l_h">6.65256</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="78">
 		<data key="p_i">0.487753</data>
 		<data key="d_i">0.705421</data>
 		<data key="g_h">-0.510708</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.28698</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="113">
 		<data key="p_i">0.538125</data>
 		<data key="d_i">0.838674</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">0.933564</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="89">
 		<data key="p_i">0.627457</data>
 		<data key="d_i">0.799092</data>
 		<data key="g_h">1.33065</data>
-		<data key="l_h">0</data>
+		<data key="l_h">4.28035</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="45">
 		<data key="p_i">0.317366</data>
 		<data key="d_i">0.909091</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.725365</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="21">
 		<data key="p_i">1</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.57964</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-3.14325</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="22">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.00347</data>
+		<data key="comm">9</data>
 	</node>
 	<node id="25">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">inf</data>
+		<data key="l_h">0</data>
+		<data key="comm">12</data>
 	</node>
 	<node id="23">
 		<data key="p_i">1</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.57964</data>
-		<data key="l_h">-inf</data>
+		<data key="l_h">0</data>
+		<data key="comm">12</data>
 	</node>
 	<node id="40">
 		<data key="p_i">2.22045e-16</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-3.00438</data>
+		<data key="comm">2</data>
 	</node>
 	<node id="36">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.17609</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="41">
 		<data key="p_i">1</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.57964</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-3.16228</data>
+		<data key="comm">1</data>
 	</node>
 	<node id="49">
 		<data key="p_i">0.123658</data>
 		<data key="d_i">0.245614</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.116775</data>
+		<data key="comm">8</data>
 	</node>
 	<node id="53">
 		<data key="p_i">0.245187</data>
 		<data key="d_i">0.551724</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">0.568399</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="55">
 		<data key="p_i">0.488995</data>
 		<data key="d_i">0.708103</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.32626</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="65">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.116775</data>
+		<data key="comm">8</data>
 	</node>
 	<node id="67">
 		<data key="p_i">0.492195</data>
 		<data key="d_i">0.715101</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.32626</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="90">
 		<data key="p_i">0.515896</data>
 		<data key="d_i">0.771832</data>
 		<data key="g_h">0.409972</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.85357</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="99">
 		<data key="p_i">0.289807</data>
 		<data key="d_i">0.717949</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">inf</data>
+		<data key="l_h">0</data>
+		<data key="comm">13</data>
 	</node>
 	<node id="105">
 		<data key="p_i">0.234254</data>
 		<data key="d_i">0.518519</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.37797</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="119">
 		<data key="p_i">0.318875</data>
 		<data key="d_i">0.933333</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.947331</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="123">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.75162</data>
+		<data key="comm">8</data>
 	</node>
 	<node id="127">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.934199</data>
+		<data key="comm">8</data>
 	</node>
 	<node id="50">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.39423</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="54">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.39423</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="56">
 		<data key="p_i">0.190442</data>
 		<data key="d_i">0.4</data>
 		<data key="g_h">-1.73828</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.500492</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="68">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.39423</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="86">
 		<data key="p_i">0.474672</data>
 		<data key="d_i">0.60049</data>
 		<data key="g_h">1.63755</data>
-		<data key="l_h">0</data>
+		<data key="l_h">4.75595</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="91">
 		<data key="p_i">0.559046</data>
 		<data key="d_i">0.745098</data>
 		<data key="g_h">0.409972</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.85357</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="98">
 		<data key="p_i">0.205072</data>
 		<data key="d_i">0.4375</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.37797</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="104">
 		<data key="p_i">0.315759</data>
 		<data key="d_i">0.888889</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.42678</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="120">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.28796</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="124">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.28796</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="128">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.28796</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="51">
 		<data key="p_i">0.205072</data>
 		<data key="d_i">0.4375</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.934199</data>
+		<data key="comm">8</data>
 	</node>
 	<node id="57">
 		<data key="p_i">0.452584</data>
 		<data key="d_i">0.843373</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">nan</data>
+		<data key="l_h">0</data>
+		<data key="comm">14</data>
 	</node>
 	<node id="106">
 		<data key="p_i">0.234254</data>
 		<data key="d_i">0.518519</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.42678</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="121">
 		<data key="p_i">0.309713</data>
 		<data key="d_i">0.833333</data>
 		<data key="g_h">-2.96585</data>
 		<data key="l_h">0</data>
+		<data key="comm">3</data>
 	</node>
 	<node id="52">
 		<data key="p_i">0.299847</data>
 		<data key="d_i">0.769231</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.8411</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="58">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.94736</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="64">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.8411</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="70">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.94736</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="82">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-0.510708</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.28698</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="84">
 		<data key="p_i">0.251375</data>
 		<data key="d_i">0.571429</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.90238</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="87">
 		<data key="p_i">0.52563</data>
 		<data key="d_i">0.798729</data>
 		<data key="g_h">0.716865</data>
-		<data key="l_h">0</data>
+		<data key="l_h">3.32916</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="107">
 		<data key="p_i">0.256471</data>
 		<data key="d_i">0.588235</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.39423</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="122">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.8411</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="88">
 		<data key="p_i">0.664887</data>
 		<data key="d_i">0.895839</data>
 		<data key="g_h">0.716865</data>
-		<data key="l_h">0</data>
+		<data key="l_h">3.32916</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="94">
 		<data key="p_i">0.523094</data>
 		<data key="d_i">0.791441</data>
 		<data key="g_h">0.409972</data>
-		<data key="l_h">inf</data>
+		<data key="l_h">0</data>
+		<data key="comm">13</data>
 	</node>
 	<node id="93">
 		<data key="p_i">0.508512</data>
 		<data key="d_i">0.75306</data>
 		<data key="g_h">-0.817601</data>
-		<data key="l_h">0</data>
+		<data key="l_h">4.35772</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="129">
 		<data key="p_i">-2.22045e-16</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">nan</data>
+		<data key="l_h">0</data>
+		<data key="comm">14</data>
 	</node>
 	<node id="59">
 		<data key="p_i">1</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.57964</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.46306</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="60">
 		<data key="p_i">1</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.57964</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-3.1817</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="92">
 		<data key="p_i">0.429519</data>
 		<data key="d_i">0.754143</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.94736</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="61">
 		<data key="p_i">1</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.57964</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2</data>
+		<data key="comm">3</data>
 	</node>
 	<node id="95">
 		<data key="p_i">0.454148</data>
 		<data key="d_i">0.569738</data>
 		<data key="g_h">-0.510708</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.42678</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="125">
 		<data key="p_i">0.398307</data>
 		<data key="d_i">0.666226</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.69252</data>
+		<data key="comm">5</data>
 	</node>
 	<node id="62">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.8411</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="63">
 		<data key="p_i">2.22045e-16</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1</data>
+		<data key="comm">3</data>
 	</node>
 	<node id="101">
 		<data key="p_i">0.377898</data>
 		<data key="d_i">0.617647</data>
 		<data key="g_h">-2.04517</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.51807</data>
+		<data key="comm">8</data>
 	</node>
 	<node id="117">
 		<data key="p_i">0.511872</data>
 		<data key="d_i">0.761454</data>
 		<data key="g_h">0.409972</data>
-		<data key="l_h">0</data>
+		<data key="l_h">2.85357</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="118">
 		<data key="p_i">0.527142</data>
 		<data key="d_i">0.632763</data>
 		<data key="g_h">-0.510708</data>
-		<data key="l_h">0</data>
+		<data key="l_h">1.42678</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="110">
 		<data key="p_i">0.242482</data>
 		<data key="d_i">0.362496</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.189466</data>
+		<data key="comm">10</data>
 	</node>
 	<node id="111">
 		<data key="p_i">0.299847</data>
 		<data key="d_i">0.769231</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.90238</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="108">
 		<data key="p_i">2.22045e-16</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1</data>
+		<data key="comm">3</data>
 	</node>
 	<node id="109">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.73483</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="85">
 		<data key="p_i">0.320634</data>
 		<data key="d_i">1</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.90238</data>
+		<data key="comm">4</data>
 	</node>
 	<node id="97">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.35207</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-0.400099</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="130">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-3.27275</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.73483</data>
+		<data key="comm">6</data>
 	</node>
 	<node id="102">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.06693</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="103">
 		<data key="p_i">0</data>
 		<data key="d_i">0</data>
 		<data key="g_h">-2.65896</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-1.06693</data>
+		<data key="comm">7</data>
 	</node>
 	<node id="96">
 		<data key="p_i">0.234254</data>
 		<data key="d_i">0.518519</data>
 		<data key="g_h">-2.96585</data>
-		<data key="l_h">0</data>
+		<data key="l_h">-2.37797</data>
+		<data key="comm">4</data>
 	</node>
 <edge source="11" target="0"/>
 <edge source="11" target="6"/>

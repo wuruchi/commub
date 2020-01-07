@@ -250,18 +250,19 @@ void Graph::print_communities()
 
 void Graph::print_node_data(const std::string &output_path, bool is_out_degree)
 {
-  std::string path = output_path + "_out.gml";
+  std::string path = output_path + "_out.graphml";
+  inner_adj_list = adj_list;
   if (is_out_degree == false){
-    path = output_path + "_in.gml";
-    adj_list = adj_list_in;
+    path = output_path + "_in.graphml";
+    inner_adj_list = adj_list_in;
   }
   ofstream myfile(path);
   if (myfile.is_open()){
     myfile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    myfile << "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\"\n";
-    myfile << "\txmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n";
-    myfile << "xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns\n";
-    myfile << "http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">\n";
+    myfile << "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\">\n";
+    // myfile << "\txmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n";
+    // myfile << "xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns\n";
+    // myfile << "http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">\n";
     myfile << "\t<key id=\"p_i\" for=\"node\" attr.name=\"participation index\" attr.type=\"double\">\n";
     myfile << "\t\t<default>0.0</default>\n";
     myfile << "\t</key>\n";
@@ -274,14 +275,18 @@ void Graph::print_node_data(const std::string &output_path, bool is_out_degree)
     myfile << "\t<key id=\"l_h\" for=\"node\" attr.name=\"local hubness\" attr.type=\"double\">\n";
     myfile << "\t\t<default>0.0</default>\n";
     myfile << "\t</key>\n";
+    myfile << "\t<key id=\"comm\" for=\"node\" attr.name=\"community\" attr.type=\"int\">\n";
+    myfile << "\t\t<default>1</default>\n";
+    myfile << "\t</key>\n";
     myfile << "<graph id=\"G\" edgedefault=\"directed\">\n";
-    for (int i = 0; i < adj_list.size(); ++i)
+    for (int i = 0; i < inner_adj_list.size(); ++i)
     {
       myfile << "\t<node id=\"" << label_index[i] << "\">\n";
       myfile << "\t\t<data key=\"p_i\">" << participation_index[i] << "</data>\n";
       myfile << "\t\t<data key=\"d_i\">" << dispersion_index[i] << "</data>\n";
       myfile << "\t\t<data key=\"g_h\">" << global_hubness[i] << "</data>\n";
       myfile << "\t\t<data key=\"l_h\">" << local_hubness[i] << "</data>\n";
+      myfile << "\t\t<data key=\"comm\">" << id_to_community[i] << "</data>\n";
       myfile << "\t</node>\n";
       // cout << label_index[i] << '\t' << participation_index[i] << '\t' << dispersion_index[i] << '\t' << global_hubness[i] << '\t' << local_hubness[i] << "\t [";
       // for(int j = 0; j < participation_vectors[i].size(); ++j){
@@ -289,18 +294,14 @@ void Graph::print_node_data(const std::string &output_path, bool is_out_degree)
       // }
       // cout << " ]" << endl;
     }
-    for (int i = 0; i < adj_list.size(); ++i){
-      for (int j = 0; j < adj_list[i].size(); ++j){
-        myfile << "<edge source=\"" << label_index[i] << "\" target=\"" << label_index[adj_list[i][j]] << "\"/>\n";
+    for (int i = 0; i < inner_adj_list.size(); ++i){
+      for (int j = 0; j < inner_adj_list[i].size(); ++j){
+        myfile << "<edge source=\"" << label_index[i] << "\" target=\"" << label_index[inner_adj_list[i][j]] << "\"/>\n";
       }
     }
     myfile << "</graph>\n</graphml>";
     myfile.close();
   }
-}
-
-void Graph::print_graphml_format(){
-
 }
 
 void Graph::print_edges(const std::string &txtfile)
@@ -366,18 +367,22 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   const std::string out_degree_path = input_path + "_out";
   const std::string in_degree_path = input_path + "_in";
   std::string pre = "Infomap ../code/" + out_degree_path + ".txt ../code/result/ -N 10 --directed";
+  std::string result_path = "../code/" + out_degree_path + ".tree";
+  inner_adj_list.clear();
+  inner_adj_list = adj_list;
   if (is_out_degree == false){
     pre = "Infomap ../code/" + in_degree_path + ".txt ../code/result/ -N 10 --directed";
-    adj_list = adj_list_in;
+    result_path = "../code/" + in_degree_path + ".tree";
+    inner_adj_list = adj_list_in;
   }
   
-  const std::string result_path = "../code/" + out_degree_path + ".tree";
+  
   std::string delimiter = " ";
   std::string second_delimiter = ":";
   std::vector<std::string> tokens;
   std::vector<std::string> inner_tokens;
   std::string line, division;
-  int N = adj_list.size(); // Number of nodes
+  int N = inner_adj_list.size(); // Number of nodes
   int M = n_edges;         // Number of edges
   int id, division_id;
   const char *command = pre.c_str();
@@ -419,7 +424,7 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   }
 
   // Participation vectors
-  for (int i = 0; i < adj_list.size(); ++i)
+  for (int i = 0; i < inner_adj_list.size(); ++i)
   {
     double in_community = 0;
     if (participation_vectors.count(i) == 0)
@@ -430,7 +435,7 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
     for (int j = 1; j <= adjacency_community.size(); ++j)
     {
       double P_i = 0;
-      int numerator = degree_vector_in_community(adj_list[i], adjacency_community[j]);
+      int numerator = degree_vector_in_community(inner_adj_list[i], adjacency_community[j]);
       int denominator = adjacency_community[j].size();
       P_i = static_cast<double>(numerator) / static_cast<double>(denominator);
       in_community += P_i;
@@ -476,26 +481,32 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
 
   // Global Hubness
   double p = density(N, M);
-  for (int i = 0; i < adj_list.size(); ++i)
+  for (int i = 0; i < inner_adj_list.size(); ++i)
   {
-    global_hubness[i] = (adj_list[i].size() - (N - 1) * p) / sqrt((N - 1) * p * (1 - p));
+    global_hubness[i] = (inner_adj_list[i].size() - (N - 1) * p) / sqrt((N - 1) * p * (1 - p));
   }
 
   // Local Hubness
   int N_community = 0;
-  int p_community = 0;
-  for (int i = 0; i < adj_list.size(); ++i)
+  double p_community = 0.0;
+  double numerator = 0.0;
+  double denominator = 0.0;
+  for (int i = 0; i < inner_adj_list.size(); ++i)
   {
     N_community = adjacency_community[id_to_community[i]].size();
-    p_community = density_of_community(adjacency_community[id_to_community[i]], adj_list);
-    if (N_community > 1 && p_community > 0)
+    p_community = density_of_community(adjacency_community[id_to_community[i]], inner_adj_list);
+    numerator = (inner_adj_list[i].size() - (N_community - 1) * p_community);
+    denominator = sqrt((N_community - 1) * p_community * (1 - p_community));
+    if (denominator > 0)
     {
-      local_hubness[i] = (adj_list[i].size() - (N_community - 1) * p) / sqrt((N_community - 1) * p_community * (1 - p_community));
+      local_hubness[i] =  numerator/denominator;
+    } else {
+      local_hubness[i] = 0;
     }
   }
 }
 
-double density_of_community(std::vector<int> &nodes_in_community, std::vector<std::vector<int>> &adj_list)
+double density_of_community(std::vector<int> &nodes_in_community, std::vector<std::vector<int>> &adj_list_set)
 {
   double p = 0.0;
   int count = 0;
@@ -506,15 +517,16 @@ double density_of_community(std::vector<int> &nodes_in_community, std::vector<st
   }
   for (int i = 0; i < nodes_in_community.size(); ++i)
   {
-    for (int j = 0; j < adj_list[nodes_in_community[i]].size(); ++j)
+    for (int j = 0; j < adj_list_set[nodes_in_community[i]].size(); ++j)
     {
-      if (std::find(nodes_in_community.begin(), nodes_in_community.end(), adj_list[nodes_in_community[i]][j]) != nodes_in_community.end())
+      if (std::find(nodes_in_community.begin(), nodes_in_community.end(), adj_list_set[nodes_in_community[i]][j]) != nodes_in_community.end())
       {
         count += 1;
       }
     }
   }
   p = static_cast<double>(count) / static_cast<double>((N * (N - 1)) / 2);
+  //std::cout << "Local community " << p << std::endl;
   return p;
 }
 

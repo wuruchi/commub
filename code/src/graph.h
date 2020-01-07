@@ -14,6 +14,7 @@ class Graph
 private:
   std::vector<std::vector<int>> adj_list;
   std::vector<std::vector<int>> adj_list_in;
+  std::vector<std::vector<int>> inner_adj_list;
   // Label handling
   std::vector<std::string> label_index; // Allows to access word values by index
   std::unordered_map<std::string, int> label_dict;

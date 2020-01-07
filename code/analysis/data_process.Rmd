@@ -1,0 +1,80 @@
+---
+title: "Data_Analysis_gml"
+author: "Wilmer"
+date: "1/7/2020"
+output: pdf_document
+---
+
+## Libraries
+```{r}
+library(igraph)
+library(ggplot2)
+```
+
+## Reading data
+
+```{r pressure, echo=FALSE}
+g_out <- read.graph('../result/C-elegans-frontal-link-list_in.graphml', format = "graphml")
+g_in <- read.graph('../result/C-elegans-frontal-link-list_out.graphml', format = "graphml")
+```
+
+## Data
+```{r}
+V(graph_out_degree)
+E(graph_out_degree)
+```
+
+## Attributes
+```{r}
+vertex_attr(g_out, "community")
+vertex_attr(g_out, "participation index")
+vertex_attr(g_out, "dispersion index")
+vertex_attr(g_out, "global hubness")
+vertex_attr(g_out, "local hubness")
+
+
+```
+
+## Plots for out degree
+```{r}
+ggplot() + 
+  geom_point(aes(vertex_attr(g_out, "local hubness"), vertex_attr(g_out, "global hubness"), color = "points")) +
+  ggtitle("Out Degree") +
+  labs(x = 'Local Hubness', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+ggplot() + 
+  geom_point(aes(vertex_attr(g_out, "participation index"), vertex_attr(g_out, "global hubness"), color = "points")) +
+  ggtitle("Out Degree") +
+  labs(x = 'Participation', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+ggplot() + 
+  geom_point(aes(vertex_attr(g_out, "participation index"), vertex_attr(g_out, "dispersion index"), color = "points")) +
+  ggtitle("Out Degree") +
+  labs(x = 'Participation', y = 'Disperion', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+```
+
+# Plots for in degree
+```{r}
+ggplot() + 
+  geom_point(aes(vertex_attr(g_in, "local hubness"), vertex_attr(g_in, "global hubness"), color = "points")) +
+  ggtitle("Out Degree") +
+  labs(x = 'Local Hubness', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+ggplot() + 
+  geom_point(aes(vertex_attr(g_in, "participation index"), vertex_attr(g_in, "global hubness"), color = "points")) +
+  ggtitle("Out Degree") +
+  labs(x = 'Participation', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+ggplot() + 
+  geom_point(aes(vertex_attr(g_in, "participation index"), vertex_attr(g_in, "dispersion index"), color = "points")) +
+  ggtitle("Out Degree") +
+  labs(x = 'Participation', y = 'Disperion', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+```
+
