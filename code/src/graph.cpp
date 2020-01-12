@@ -66,24 +66,26 @@ Graph::Graph()
 
 // Auxiliary function to tokenize a string to facilitate parsing.
 // WARNING: Replaces all contents inside the vector 'tokens'
-size_t tokenize_line(const string &line, vector<size_t> &token_pos, const string &sep = " ")
-{
-  token_pos.clear(); // Clear the vector before pushing in the new tokens
-  size_t tail = 0, head = line.find(sep);
-  while (tail < line.size())
-  {
-    if (head > tail)
-    {
-      token_pos.push_back(tail);
-      token_pos.push_back(head - tail);
-    }
-    tail = head + 1;
-    head = line.find(sep, tail);
-    if (head > line.size())
-      head = line.size();
-  }
-  return token_pos.size() / 2;
-}
+// size_t tokenize_line(const string &line, vector<size_t> &token_pos, const string &sep = " ")
+// {
+//   token_pos.clear(); // Clear the vector before pushing in the new tokens
+//   int counter = 0;
+//   size_t tail = 0, head = line.find(sep);
+//   while (counter <= 1)//while (tail < line.size())
+//   {
+//     if (head > tail)
+//     {
+//       token_pos.push_back(tail);
+//       token_pos.push_back(head - tail);
+//     }
+//     tail = head + 1;
+//     head = line.find(sep, tail);
+//     if (head > line.size())
+//       head = line.size();
+//     counter += 1;
+//   }
+//   return token_pos.size() / 2;
+// }
 
 // This assumes that the first line in the file indicates the number of vertices
 // and edges in the graph described by the file. Those numbers are used as a
@@ -91,8 +93,8 @@ size_t tokenize_line(const string &line, vector<size_t> &token_pos, const string
 int read_graph_from_file(const string &path, Graph &g)
 {
   int lines_read = 1, vx_read, exp_v, exp_e, vx[2], loops = 0, multiedges = 0;
-  string line, w;
-  vector<size_t> token_pos;
+  string line, w, delimiter = "\t";
+  std::vector<std::string> tokens;
   ifstream f(path); // Create a file stream for the specified path
   if (!f.is_open())
   {
@@ -118,30 +120,21 @@ int read_graph_from_file(const string &path, Graph &g)
   while (getline(f, line))
   {
     ++lines_read;
-    vx_read = 0;
-    for (size_t i = 0; i < tokenize_line(line, token_pos); ++i)
+    tokenize_line(line, delimiter, tokens);
+    cout << tokens[0] << " " << tokens[1] << endl;
+    if (tokens.size() < 2)
     {
-      if (!line.compare(token_pos[2 * i], token_pos[2 * i + 1], " "))
-      {
-        cerr << " - Bad word token found at file row " << lines_read << endl;
-      }
-      else if (++vx_read > 2)
-      {
-        cerr << " - More than 2 vertices found at file row " << lines_read
-             << ". Omitting additional vertices" << endl;
-      }
-      else
-      {
-        vx[i] = g.add_vertex(line.substr(token_pos[2 * i], token_pos[2 * i + 1]));
-      }
+      cerr << " - Bad word token found at file row " << lines_read << endl;
     }
+    else
+    {
+      vx[0] = g.add_vertex(tokens[0]);
+      vx[1] = g.add_vertex(tokens[1]);
+    }
+  
     //cout << vx[0] << " # " << vx[1] << endl;
     //cout << line << endl;
-    if (vx_read != 2)
-    {
-      cerr << " - Malformed edge representation at file row " << lines_read << endl;
-    }
-    else if (vx[0] == vx[1])
+    if (vx[0] == vx[1])
     {
       ++loops;
     }
@@ -237,15 +230,27 @@ void Graph::print_edges()
 }
 void Graph::print_communities()
 {
-  for (int i = 1; i <= adjacency_community.size(); ++i)
-  {
-    cout << i << " : ";
-    for (int j = 0; j < adjacency_community[i].size(); ++j)
-    {
-      cout << adjacency_community[i][j] << " ";
+  cout << " Adjacency Community size: " << adjacency_community.size() << endl;
+  std::vector<int> comm_content;
+  for(auto& x: adjacency_community){
+    std::cout << x.first;
+    comm_content.clear();
+    comm_content = x.second;
+    cout << " : size " << comm_content.size() << " content : ";
+    for(int i = 0; i < comm_content.size(); ++i){
+      cout << comm_content[i] << ",";
     }
     cout << endl;
   }
+  // for (int i = 1; i <= adjacency_community.size(); ++i)
+  // {
+  //   cout << i << " : ";
+  //   for (int j = 0; j < adjacency_community[i].size(); ++j)
+  //   {
+  //     cout << adjacency_community[i][j] << " ";
+  //   }
+  //   cout << endl;
+  // }
 }
 
 void Graph::print_node_data(const std::string &output_path, bool is_out_degree)
@@ -362,20 +367,44 @@ void Graph::tokenize_line_plus(std::string &line, std::string &delimiter, std::v
   tokens.push_back(line);
 }
 
-int Graph::calculate_community(std::string &input_path, bool is_out_degree)
+void tokenize_line(std::string &line, std::string &delimiter, std::vector<std::string> &tokens)
 {
+  tokens.clear();
+  size_t pos = 0;
+  std::string token;
+  while ((pos = line.find(delimiter)) != std::string::npos)
+  {
+    token = line.substr(0, pos);
+    //std::cout << line << std::endl;
+    tokens.push_back(token);
+    line.erase(0, pos + delimiter.length());
+    //counter += 1;
+  }
+  //tokens.push_back(line);
+}
+
+void Graph::calculate_community(std::string &input_path, bool is_out_degree)
+{
+  std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
   const std::string out_degree_path = input_path + "_out";
   const std::string in_degree_path = input_path + "_in";
-  std::string pre = "Infomap ../code/" + out_degree_path + ".txt ../code/result/ -N 10 --directed";
+  std::string pre = "Infomap ../code/" + out_degree_path + ".txt ../code/result/ -N 5 --directed";
   std::string result_path = "../code/" + out_degree_path + ".tree";
   inner_adj_list.clear();
+  adjacency_community.clear();
+  id_to_community.clear();
+  participation_vectors.clear();
+  participation_index.clear();
+  dispersion_index.clear();
+  global_hubness.clear();
+  local_hubness.clear();
+  community_to_density.clear();
   inner_adj_list = adj_list;
   if (is_out_degree == false){
     pre = "Infomap ../code/" + in_degree_path + ".txt ../code/result/ -N 10 --directed";
     result_path = "../code/" + in_degree_path + ".tree";
     inner_adj_list = adj_list_in;
   }
-  
   
   std::string delimiter = " ";
   std::string second_delimiter = ":";
@@ -392,7 +421,7 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   if (!f.is_open())
   {
     cerr << "Error: Unable to open file '" << result_path << "'" << endl;
-    return -1;
+    return;
   }
   cerr << "***********************************************" << endl;
   cerr << "Reading Infomap result from file '" << result_path << "'..." << endl;
@@ -424,8 +453,11 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   }
 
   // Participation vectors
+  cerr << "***********************************************" << endl;
+  cerr << "Computing Participation Vectors for " << inner_adj_list.size() << endl;
   for (int i = 0; i < inner_adj_list.size(); ++i)
   {
+    //cout << i << endl;
     double in_community = 0;
     if (participation_vectors.count(i) == 0)
     {
@@ -456,12 +488,16 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   }
 
   // Participation index
+  cerr << "***********************************************" << endl;
+  cerr << "Computing Participation Index" << endl;
   for (int i = 0; i < participation_vectors.size(); ++i)
   {
     participation_index[i] = 1 - (participation_vectors[i].size() / sqrt(participation_vectors[i].size() - 1)) * standard_deviation(participation_vectors[i]);
   }
 
   // Dispersion
+  cerr << "***********************************************" << endl;
+  cerr << "Computing Dispersion" << endl;
   std::vector<double> reduced_vector;
   int dimension = 0;
   for (int i = 0; i < participation_vectors.size(); ++i)
@@ -480,6 +516,8 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   }
 
   // Global Hubness
+  cerr << "***********************************************" << endl;
+  cerr << "Computing Global Hubness" << endl;
   double p = density(N, M);
   for (int i = 0; i < inner_adj_list.size(); ++i)
   {
@@ -487,6 +525,8 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   }
 
   // Local Hubness
+  cerr << "***********************************************" << endl;
+  cerr << "Computing Local Hubness" << endl;
   int N_community = 0;
   double p_community = 0.0;
   double numerator = 0.0;
@@ -494,7 +534,7 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
   for (int i = 0; i < inner_adj_list.size(); ++i)
   {
     N_community = adjacency_community[id_to_community[i]].size();
-    p_community = density_of_community(adjacency_community[id_to_community[i]], inner_adj_list);
+    p_community = Graph::density_of_community(adjacency_community[id_to_community[i]], inner_adj_list, id_to_community[i]);
     numerator = (inner_adj_list[i].size() - (N_community - 1) * p_community);
     denominator = sqrt((N_community - 1) * p_community * (1 - p_community));
     if (denominator > 0)
@@ -504,13 +544,22 @@ int Graph::calculate_community(std::string &input_path, bool is_out_degree)
       local_hubness[i] = 0;
     }
   }
+
+  std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+  std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()/1.66667e-8 << "[ss]" << std::endl;
+
 }
 
-double density_of_community(std::vector<int> &nodes_in_community, std::vector<std::vector<int>> &adj_list_set)
+// Calculating density of community
+double Graph::density_of_community(std::vector<int> &nodes_in_community, std::vector<std::vector<int>> &adj_list_set, int &community_id)
 {
   double p = 0.0;
   int count = 0;
   int N = nodes_in_community.size();
+  if (community_to_density.count(community_id) > 0)
+  {
+    return community_to_density[community_id];
+  }
   if (N == 0)
   {
     return 0.0;
@@ -526,21 +575,24 @@ double density_of_community(std::vector<int> &nodes_in_community, std::vector<st
     }
   }
   p = static_cast<double>(count) / static_cast<double>((N * (N - 1)) / 2);
+  community_to_density[community_id] = p;
   //std::cout << "Local community " << p << std::endl;
-  return p;
+  return community_to_density[community_id];
 }
 
 int degree_vector_in_community(std::vector<int> &degree, std::vector<int> &community)
 {
-  std::vector<int> result;
+  int result = 0;
+  //std::vector<int> result;
   for (int i = 0; i < degree.size(); ++i)
   {
     if (std::find(community.begin(), community.end(), degree[i]) != community.end())
     {
-      result.push_back(degree[i]);
+      result += 1;
+      //result.push_back(degree[i]);
     }
   }
-  return result.size();
+  return result;
 }
 
 double standard_deviation(std::vector<double> &v)

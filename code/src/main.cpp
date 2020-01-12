@@ -12,8 +12,9 @@ int main()
   std::mt19937 eng(rd()); // seed the generator
 
   // Clearing last results
-  std::string data_path = "data/C-elegans-frontal.txt";
-  std::string input_path = "result/C-elegans-frontal-link-list";
+  std::string data_name = "Vaga8Nov";
+  std::string data_path = "data_test/" + data_name + ".edges";
+  std::string input_path = "result/" + data_name + "-link-list";
 
   Graph gB = Graph();
   read_graph_from_file(data_path, gB);
