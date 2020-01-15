@@ -14,79 +14,100 @@ library(ggplot2)
 ## Reading data
 
 ```{r pressure, echo=FALSE}
-g_out <- read.graph('../result/C-elegans-frontal-link-list_in.graphml', format = "graphml")
-g_in <- read.graph('../result/C-elegans-frontal-link-list_out.graphml', format = "graphml")
+dataname <- "Vaga8Nov"
+path_mr_in <- paste('../result/', dataname, '-link-list_in.graphml', sep = '')
+path_mr_in
+path_mr_out <- paste('../result/', dataname, '-link-list_out.graphml', sep = '')
+path_mr_out
+mr_in <- read.graph(path_mr_in, format = "graphml")
+mr_out <- read.graph(path_mr_out, format = "graphml")
 ```
 
 ## Data
 ```{r}
-V(g_out)
-E(g_in)
+V(mr_out)
+E(mr_in)
 ```
 
 ## Attributes
 ```{r}
-vertex_attr(g_out, "community")
-vertex_attr(g_out, "participation index")
-vertex_attr(g_out, "dispersion index")
-vertex_attr(g_out, "global hubness")
-vertex_attr(g_out, "local hubness")
+vertex_attr(mr_out, "community")
+vertex_attr(mr_out, "participation index")
+vertex_attr(mr_out, "dispersion index")
+vertex_attr(mr_out, "global hubness")
+vertex_attr(mr_out, "local hubness")
 
 
 ```
 
 ## Plots for out degree
 ```{r}
+png(filename=paste(dataname,"_lh_gh_out.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_out, "local hubness"), vertex_attr(g_out, "global hubness"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_out, "local hubness"), vertex_attr(mr_out, "global hubness"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Local Hubness', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 
+png(filename=paste(dataname,"_pi_gh_out.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_out, "participation index"), vertex_attr(g_out, "global hubness"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_out, "participation index"), vertex_attr(mr_out, "global hubness"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Participation', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 
+png(filename=paste(dataname,"_pi_lh_out.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_out, "participation index"), vertex_attr(g_out, "local hubness"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_out, "participation index"), vertex_attr(mr_out, "local hubness"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Participation', y = 'Local Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 
+png(filename=paste(dataname,"_pi_di_out.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_out, "participation index"), vertex_attr(g_out, "dispersion index"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_out, "participation index"), vertex_attr(mr_out, "dispersion index"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Participation', y = 'Disperion', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 
 ```
 
 # Plots for in degree
 ```{r}
+png(filename=paste(dataname,"_lh_gh_in.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_in, "local hubness"), vertex_attr(g_in, "global hubness"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_in, "local hubness"), vertex_attr(mr_in, "global hubness"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Local Hubness', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 
+png(filename=paste(dataname,"_pi_gh_in.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_in, "participation index"), vertex_attr(g_in, "global hubness"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_in, "participation index"), vertex_attr(mr_in, "global hubness"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Participation', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 
+png(filename=paste(dataname,"_pi_lh_in.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_in, "participation index"), vertex_attr(g_in, "local hubness"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_in, "participation index"), vertex_attr(mr_in, "local hubness"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Participation', y = 'Local Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 
+png(filename=paste(dataname,"_pi_di_in.png", sep = ''))
 ggplot() + 
-  geom_point(aes(vertex_attr(g_in, "participation index"), vertex_attr(g_in, "dispersion index"), color = "points")) +
+  geom_point(aes(vertex_attr(mr_in, "participation index"), vertex_attr(mr_in, "dispersion index"), color = "points")) +
   ggtitle("Out Degree") +
   labs(x = 'Participation', y = 'Disperion', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
     theme(legend.position = "none")
+dev.off()
 ```
 

@@ -36,6 +36,7 @@ public:
   // We only use default STL structures, do we need a copy constructor?
   void print_edges();
   void print_communities();
+  void print_communities_sizes();
   void print_node_data(const std::string &output_path, bool is_out_degree = true);
   void print_graphml_format();
   void print_edges(const std::string &txtfile);
@@ -54,7 +55,8 @@ public:
   const std::vector<int> &get_neighbours(int id) const;
   int get_degree(int id) const;
   void get_degree_seq(std::vector<int> &deg_seq);
-  void calculate_community(std::string &input_path, bool is_out_degree = true);
+  void calculate_metrics(bool is_out_degree = true);
+  void calculate_community_only(std::string &input_path, bool is_out_degree = true);  
   double density_of_community(std::vector<int> &nodes_in_community, std::vector<std::vector<int>> &adj_list, int &community_id);
 };
 int read_graph_from_file(const std::string &path, Graph &g);
