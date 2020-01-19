@@ -131,7 +131,7 @@ int read_graph_from_file(const string &path, Graph &g)
       vx[0] = g.add_vertex(tokens[0]);
       vx[1] = g.add_vertex(tokens[1]);
     }
-  
+
     //cout << vx[0] << " # " << vx[1] << endl;
     //cout << line << endl;
     if (vx[0] == vx[1])
@@ -226,28 +226,31 @@ void Graph::print_edges()
     }
     cout << endl;
   }
-
 }
 void Graph::print_communities()
 {
   cout << " Adjacency Community size: " << adjacency_community.size() << endl;
   std::vector<int> comm_content;
-  for(auto& x: adjacency_community){
+  for (auto &x : adjacency_community)
+  {
     std::cout << x.first;
     comm_content.clear();
     comm_content = x.second;
     cout << " : size " << comm_content.size() << " content : ";
-    for(int i = 0; i < comm_content.size(); ++i){
+    for (int i = 0; i < comm_content.size(); ++i)
+    {
       cout << comm_content[i] << ",";
     }
     cout << endl;
   }
 }
 
-void Graph::print_communities_sizes(){
+void Graph::print_communities_sizes()
+{
   cout << " Adjacency Community size: " << adjacency_community.size() << endl;
   std::vector<int> comm_content;
-  for(auto& x: adjacency_community){
+  for (auto &x : adjacency_community)
+  {
     std::cout << x.first;
     comm_content.clear();
     comm_content = x.second;
@@ -259,12 +262,14 @@ void Graph::print_node_data(const std::string &output_path, bool is_out_degree)
 {
   std::string path = output_path + "_out.graphml";
   inner_adj_list = adj_list;
-  if (is_out_degree == false){
+  if (is_out_degree == false)
+  {
     path = output_path + "_in.graphml";
     // inner_adj_list = adj_list_in;
   }
   ofstream myfile(path);
-  if (myfile.is_open()){
+  if (myfile.is_open())
+  {
     myfile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
     myfile << "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\">\n";
     // myfile << "\txmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n";
@@ -301,8 +306,10 @@ void Graph::print_node_data(const std::string &output_path, bool is_out_degree)
       // }
       // cout << " ]" << endl;
     }
-    for (int i = 0; i < inner_adj_list.size(); ++i){
-      for (int j = 0; j < inner_adj_list[i].size(); ++j){
+    for (int i = 0; i < inner_adj_list.size(); ++i)
+    {
+      for (int j = 0; j < inner_adj_list[i].size(); ++j)
+      {
         myfile << "<edge source=\"" << label_index[i] << "\" target=\"" << label_index[inner_adj_list[i][j]] << "\"/>\n";
       }
     }
@@ -343,8 +350,8 @@ void Graph::print_edges(const std::string &txtfile)
       for (int j = 0; j < adj_list_in[i].size(); ++j)
       {
         myfile2 << i + 1 << " " << adj_list_in[i][j] + 1 << " "
-               << "1"
-               << "\n";
+                << "1"
+                << "\n";
       }
     }
     myfile2.close();
@@ -385,7 +392,8 @@ void tokenize_line(std::string &line, std::string &delimiter, std::vector<std::s
   //tokens.push_back(line);
 }
 
-void Graph::calculate_community_only(std::string &input_path, bool is_out_degree){
+void Graph::calculate_community_only(std::string &input_path, bool is_out_degree)
+{
   std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
   const std::string out_degree_path = input_path + "_out";
   std::string pre = "Infomap ../code/" + out_degree_path + ".txt ../code/result/ -N 5 --directed";
@@ -437,7 +445,7 @@ void Graph::calculate_community_only(std::string &input_path, bool is_out_degree
     }
   }
   std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-  std::cout << "Seconds spent calculating communites = " << std::chrono::duration_cast<std::chrono::seconds>(end - begin).count()<< "[s]" << std::endl;
+  std::cout << "Seconds spent calculating communites = " << std::chrono::duration_cast<std::chrono::seconds>(end - begin).count() << "[s]" << std::endl;
 }
 
 void Graph::calculate_metrics(bool is_out_degree)
@@ -450,26 +458,32 @@ void Graph::calculate_metrics(bool is_out_degree)
   global_hubness.clear();
   local_hubness.clear();
   // Clearing empty communities (if there is any)
-  for (auto it0 = adjacency_community.begin(); it0 != adjacency_community.end(); ++it0){
+  for (auto it0 = adjacency_community.begin(); it0 != adjacency_community.end(); ++it0)
+  {
     int key = it0->first;
     std::vector<int> value = it0->second;
-    if (value.size() == 0){
+    if (value.size() == 0)
+    {
       adjacency_community.erase(key);
     }
   }
   //community_to_density.clear();
   inner_adj_list = adj_list;
-  if (is_out_degree == false){
+  if (is_out_degree == false)
+  {
     inner_adj_list = adj_list_in;
   }
-  
+
   int N = inner_adj_list.size(); // Number of nodes
-  int M = n_edges;         // Number of edges
+  int M = n_edges;               // Number of edges
 
   // Participation vectors
-  if (is_out_degree == false){ 
+  if (is_out_degree == false)
+  {
     cerr << "### Using In-Degree ###" << endl;
-  } else {
+  }
+  else
+  {
     cerr << "### Using Out-Degree ###" << endl;
   }
 
@@ -487,7 +501,8 @@ void Graph::calculate_metrics(bool is_out_degree)
     //cerr << " Participation vectors. Adj size : "  << inner_adj_list[i].size() << " com size: " <<  adjacency_community.size() << endl;
     for (auto it = adjacency_community.begin(); it != adjacency_community.end(); ++it)
     {
-      if (inner_adj_list[i].size() > 0){
+      if (inner_adj_list[i].size() > 0)
+      {
         int key = it->first;
         std::vector<int> value = it->second;
         double P_i = 0;
@@ -497,15 +512,19 @@ void Graph::calculate_metrics(bool is_out_degree)
         P_i = static_cast<double>(numerator) / static_cast<double>(denominator);
         in_community += P_i;
         participation_vectors[i].push_back(P_i);
-      }else{
-         participation_vectors[i].push_back(0.0);
       }
-      
+      else
+      {
+        participation_vectors[i].push_back(0.0);
+      }
     }
     //cerr << " Normalizing " << endl;
     // Normalizing participation vectors
     for (int k = 0; k < participation_vectors[i].size(); ++k)
     {
+      // Not defined for degree in/out equal to 0
+      // Quick fix
+      // Right fix: Set Participation index to NULL (NA)
       if (in_community > 0)
       {
         participation_vectors[i][k] = participation_vectors[i][k] / in_community;
@@ -569,15 +588,16 @@ void Graph::calculate_metrics(bool is_out_degree)
     denominator = sqrt((N_community - 1) * p_community * (1 - p_community));
     if (denominator > 0)
     {
-      local_hubness[i] =  numerator/denominator;
-    } else {
+      local_hubness[i] = numerator / denominator;
+    }
+    else
+    {
       local_hubness[i] = 0;
     }
   }
 
   std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
   std::cout << "Metrics calculated in = " << std::chrono::duration_cast<std::chrono::seconds>(end - begin).count() << " [s]" << std::endl;
-
 }
 
 // Calculating density of community
@@ -613,7 +633,8 @@ double Graph::density_of_community(std::vector<int> &nodes_in_community, std::ve
 int degree_vector_in_community(std::vector<int> &degree, std::vector<int> &community)
 {
   int result = 0;
-  if (degree.size() == 0){
+  if (degree.size() == 0)
+  {
     return result;
   }
   //std::vector<int> result;
@@ -636,6 +657,7 @@ double standard_deviation(std::vector<double> &v)
 
   std::vector<double> diff(v.size());
   std::transform(v.begin(), v.end(), diff.begin(), [mean](double x) { return x - mean; });
+
   double sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
   double stdev = std::sqrt(sq_sum / v.size());
   return stdev;
@@ -665,5 +687,3 @@ double density(int &n_nodes, int &n_edges)
     return 0.0;
   }
 }
-
-

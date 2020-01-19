@@ -9,18 +9,25 @@ output: pdf_document
 ```{r}
 library(igraph)
 library(ggplot2)
+library(gridExtra)
 ```
 
 ## Reading data
 
 ```{r pressure, echo=FALSE}
-dataname <- "Vaga8Nov"
-path_mr_in <- paste('../result/', dataname, '-link-list_in.graphml', sep = '')
-path_mr_in
-path_mr_out <- paste('../result/', dataname, '-link-list_out.graphml', sep = '')
-path_mr_out
+dataname <- "Marta_Rovira"
+path_mr_in <- paste('../result/', 'Marta_Rovira', '-link-list_in.graphml', sep = '')
+path_vaga_in <- paste('../result/', 'Vaga8Nov', '-link-list_in.graphml', sep = '')
+path_nb_in <- paste('../result/', 'nochebuena', '-link-list_in.graphml', sep = '')
+path_mr_out <- paste('../result/', 'Marta_Rovira', '-link-list_out.graphml', sep = '')
+path_nb_out <- paste('../result/', 'nochebuena', '-link-list_out.graphml', sep = '')
+path_vaga_out <- paste('../result/', 'Vaga8Nov', '-link-list_out.graphml', sep = '')
 mr_in <- read.graph(path_mr_in, format = "graphml")
 mr_out <- read.graph(path_mr_out, format = "graphml")
+vaga_in <- read.graph(path_vaga_in, format = "graphml")
+vaga_out <- read.graph(path_vaga_out, format = "graphml")
+nb_in <- read.graph(path_nb_in, format = "graphml")
+nb_out <- read.graph(path_nb_out, format = "graphml")
 ```
 
 ## Data
@@ -39,6 +46,77 @@ vertex_attr(mr_out, "local hubness")
 
 
 ```
+
+## Disperion vs GH
+```{r}
+p1 <- ggplot() + 
+  geom_point(aes(vertex_attr(mr_out, "participation index"), vertex_attr(mr_out, "global hubness"), color = "points")) +
+  ggtitle(paste("Out Degree", 'Marta_Rovira')) +
+  labs(x = 'participation Index', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+p2 <- ggplot() + 
+  geom_point(aes(vertex_attr(vaga_out, "participation index"), vertex_attr(vaga_out, "global hubness"), color = "points")) +
+  ggtitle("Out Degree Vaga8Nov") +
+  labs(x = 'participation Index', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+p3 <- ggplot() + 
+  geom_point(aes(vertex_attr(nb_out, "participation index"), vertex_attr(nb_out, "global hubness"), color = "points")) +
+  ggtitle("Out Degree nochebuena") +
+  labs(x = 'participation Index', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+grid.arrange(p1, p2, p3, nrow = 1)
+
+
+```
+
+## Disperion vs GH
+```{r}
+p1 <- ggplot() + 
+  geom_point(aes(vertex_attr(mr_in, "participation index"), vertex_attr(mr_in, "global hubness"), color = "points")) +
+  ggtitle(paste("IN Degree", 'Marta_Rovira')) +
+  labs(x = 'participation Index', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+p2 <- ggplot() + 
+  geom_point(aes(vertex_attr(vaga_in, "participation index"), vertex_attr(vaga_in, "global hubness"), color = "points")) +
+  ggtitle("IN Degree Vaga8Nov") +
+  labs(x = 'participation Index', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+p3 <- ggplot() + 
+  geom_point(aes(vertex_attr(nb_in, "participation index"), vertex_attr(nb_in, "global hubness"), color = "points")) +
+  ggtitle("IN Degree nochebuena") +
+  labs(x = 'participation Index', y = 'Global Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+p4 <- ggplot() + 
+  geom_point(aes(vertex_attr(mr_in, "participation index"), vertex_attr(mr_in, "local hubness"), color = "points")) +
+  ggtitle(paste("IN Degree", 'Marta_Rovira')) +
+  labs(x = 'participation Index', y = 'local Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+p5 <- ggplot() + 
+  geom_point(aes(vertex_attr(vaga_in, "participation index"), vertex_attr(vaga_in, "local hubness"), color = "points")) +
+  ggtitle("IN Degree Vaga8Nov") +
+  labs(x = 'participation Index', y = 'local Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+p6 <- ggplot() + 
+  geom_point(aes(vertex_attr(nb_in, "participation index"), vertex_attr(nb_in, "local hubness"), color = "points")) +
+  ggtitle("IN Degree nochebuena") +
+  labs(x = 'participation Index', y = 'local Hubness', color="Legend") + scale_color_manual(values=c("#F8766D", "#00BFC4"))+
+    theme(legend.position = "none")
+
+
+grid.arrange(p1, p2, p3, nrow = 1)
+grid.arrange(p4, p5, p6, nrow = 1)
+
+
+```
+
 
 ## Plots for out degree
 ```{r}
