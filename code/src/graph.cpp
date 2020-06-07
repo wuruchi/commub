@@ -64,29 +64,6 @@ Graph::Graph()
   n_edges = 0;
 }
 
-// Auxiliary function to tokenize a string to facilitate parsing.
-// WARNING: Replaces all contents inside the vector 'tokens'
-// size_t tokenize_line(const string &line, vector<size_t> &token_pos, const string &sep = " ")
-// {
-//   token_pos.clear(); // Clear the vector before pushing in the new tokens
-//   int counter = 0;
-//   size_t tail = 0, head = line.find(sep);
-//   while (counter <= 1)//while (tail < line.size())
-//   {
-//     if (head > tail)
-//     {
-//       token_pos.push_back(tail);
-//       token_pos.push_back(head - tail);
-//     }
-//     tail = head + 1;
-//     head = line.find(sep, tail);
-//     if (head > line.size())
-//       head = line.size();
-//     counter += 1;
-//   }
-//   return token_pos.size() / 2;
-// }
-
 // This assumes that the first line in the file indicates the number of vertices
 // and edges in the graph described by the file. Those numbers are used as a
 // reference and not actually included in the graph.
@@ -121,7 +98,7 @@ int read_graph_from_file(const string &path, Graph &g)
   {
     ++lines_read;
     tokenize_line(line, delimiter, tokens);
-    cout << tokens[0] << " " << tokens[1] << endl;
+    // cout << tokens[0] << " " << tokens[1] << endl;
     if (tokens.size() < 2)
     {
       cerr << " - Bad word token found at file row " << lines_read << endl;
@@ -392,11 +369,13 @@ void tokenize_line(std::string &line, std::string &delimiter, std::vector<std::s
   //tokens.push_back(line);
 }
 
-void Graph::calculate_community_only(std::string &input_path, bool is_out_degree)
+void Graph::calculate_community_only(std::string &input_path, std::string &data_name, bool is_out_degree)
 {
   std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
   const std::string out_degree_path = input_path + "_out";
-  std::string pre = "Infomap ../code/" + out_degree_path + ".txt ../code/result/ -N 5 --directed";
+  std::string pre = "Infomap ../code/" + out_degree_path + ".txt ../code/result/" + data_name + " -N 5 --directed";
+  // std::cout << out_degree_path << std::endl;
+  // std::cout << pre << std::endl;
   std::string result_path = "../code/" + out_degree_path + ".tree";
   adjacency_community.clear();
   id_to_community.clear();

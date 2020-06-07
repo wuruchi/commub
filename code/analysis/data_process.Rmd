@@ -32,8 +32,8 @@ nb_out <- read.graph(path_nb_out, format = "graphml")
 
 ## Data
 ```{r}
-V(mr_out)
-E(mr_in)
+V(vaga_out)
+E(vaga_out)
 ```
 
 ## Attributes
