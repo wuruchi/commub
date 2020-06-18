@@ -1,0 +1,187 @@
+---
+title: "Results_DL"
+author: "Wilmer"
+date: "6/18/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r cars}
+library(ggplot2)
+library(xtable)
+library(dplyr)
+```
+
+## Reading data
+
+Do not forget to change the paths
+
+```{r pressure, echo=FALSE}
+
+Marta_Rovira <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/Marta_Rovira_result.txt", header = TRUE, sep=",")
+Vaga8Nov <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/Vaga8Nov_result.txt", header = TRUE, sep=",")
+nochebuena <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/Nochebuena_result.txt", header = TRUE, sep=",")
+blm <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/BLM_result.txt", header = TRUE, sep=",")
+covid <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/COVID19_result.txt", header = TRUE, sep=",")
+primavera <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/primavera_result.txt", header = TRUE, sep=",")
+sant_jordi <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/sant_jordi_result.txt", header = TRUE, sep=",")
+quarantine <- read.table("/Users/BleuDChan/UPCRepos/commub/results_analysis/quarantine_result.txt", header = TRUE, sep=",")
+```
+
+## Building Plots
+
+```{r}
+dispersion_index <- Marta_Rovira[c("n")]
+participation_index <- Marta_Rovira[c("n")]
+local_hubness <- Marta_Rovira[c("n")]
+global_hubness <- Marta_Rovira[c("n")]
+
+dispersion_index$MR <- Marta_Rovira$d_i
+dispersion_index$V8 <- Vaga8Nov$d_i
+dispersion_index$nb <- nochebuena$d_i
+dispersion_index$blm <- blm$d_i
+dispersion_index$covid <- covid$d_i
+dispersion_index$primav <- primavera$d_i
+dispersion_index$sjordi <- sant_jordi$d_i
+dispersion_index$quar <- quarantine$d_i
+
+participation_index$MR <- Marta_Rovira$p_i
+participation_index$V8 <- Vaga8Nov$p_i
+participation_index$nb <- nochebuena$p_i
+participation_index$blm <- blm$p_i
+participation_index$covid <- covid$p_i
+participation_index$primav <- primavera$p_i
+participation_index$sjordi <- sant_jordi$p_i
+participation_index$quar <- quarantine$p_i
+
+local_hubness$MR <- Marta_Rovira$l_h
+local_hubness$V8 <- Vaga8Nov$l_h
+local_hubness$nb <- nochebuena$l_h
+local_hubness$blm <- blm$l_h
+local_hubness$covid <- covid$l_h
+local_hubness$primav <- primavera$l_h
+local_hubness$sjordi <- sant_jordi$l_h
+local_hubness$quar <- quarantine$l_h
+
+global_hubness$MR <- Marta_Rovira$g_h
+global_hubness$V8 <- Vaga8Nov$g_h
+global_hubness$nb <- nochebuena$g_h
+global_hubness$blm <- blm$g_h
+global_hubness$covid <- covid$g_h
+global_hubness$primav <- primavera$g_h
+global_hubness$sjordi <- sant_jordi$g_h
+global_hubness$quar <- quarantine$g_h
+
+
+```
+
+## Plotting Dispersion Index
+
+```{r}
+d_i_main3 <- ggplot(data=dispersion_index, aes(x=dispersion_index$n)) + 
+  geom_line(aes(color="MR", y = MR)) +
+  geom_line(aes(color="V8", y = V8)) +
+  geom_line(aes(color="nb", y = nb)) +
+  labs(x="sample") +
+  labs(y="Dispersion Index") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("main3_dispersion_index",".jpg", sep = ""), plot=d_i_main3, height=4, width = 6, units = "in")
+
+d_i_others <- ggplot(data=dispersion_index, aes(x=dispersion_index$n)) + 
+  geom_line(aes(color="blm", y = blm)) +
+  geom_line(aes(color="covid", y = covid)) +
+  geom_line(aes(color="primav", y = primav)) +
+  geom_line(aes(color="sjordi", y = sjordi)) +
+  geom_line(aes(color="quar", y = quar)) +
+  labs(x="sample") +
+  labs(y="Dispersion Index") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("others_dispersion_index",".jpg", sep = ""), plot=d_i_others, height=4, width = 6, units = "in")
+```
+
+## Plotting Participation Index
+```{r}
+p_i_main3 <- ggplot(data=participation_index, aes(x=participation_index$n)) + 
+  geom_line(aes(color="MR", y = MR)) +
+  geom_line(aes(color="V8", y = V8)) +
+  geom_line(aes(color="nb", y = nb)) +
+  labs(x="sample") +
+  labs(y="Participation Index") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("main3_participation_index",".jpg", sep = ""), plot=p_i_main3, height=4, width = 6, units = "in")
+
+p_i_others <- ggplot(data=participation_index, aes(x=participation_index$n)) + 
+  geom_line(aes(color="blm", y = blm)) +
+  geom_line(aes(color="covid", y = covid)) +
+  geom_line(aes(color="primav", y = primav)) +
+  geom_line(aes(color="sjordi", y = sjordi)) +
+  geom_line(aes(color="quar", y = quar)) +
+  labs(x="sample") +
+  labs(y="Participation Index") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("others_participation_index",".jpg", sep = ""), plot=p_i_others, height=4, width = 6, units = "in")
+```
+
+
+## Local Hubness
+
+```{r}
+l_h_main3 <- ggplot(data=local_hubness, aes(x=local_hubness$n)) + 
+  geom_line(aes(color="MR", y = MR)) +
+  geom_line(aes(color="V8", y = V8)) +
+  geom_line(aes(color="nb", y = nb)) +
+  labs(x="sample") +
+  labs(y="Local Hubness") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("main3_local_hubnesss",".jpg", sep = ""), plot=l_h_main3, height=4, width = 6, units = "in")
+
+l_h_others <- ggplot(data=local_hubness, aes(x=local_hubness$n)) + 
+  geom_line(aes(color="blm", y = blm)) +
+  geom_line(aes(color="covid", y = covid)) +
+  geom_line(aes(color="primav", y = primav)) +
+  geom_line(aes(color="sjordi", y = sjordi)) +
+  geom_line(aes(color="quar", y = quar)) +
+  labs(x="sample") +
+  labs(y="Local Hubness") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("others_local_hubness",".jpg", sep = ""), plot=l_h_others, height=4, width = 6, units = "in")
+```
+
+
+## Global Hubness
+
+```{r}
+g_h_main3 <- ggplot(data=global_hubness, aes(x=global_hubness$n)) + 
+  geom_line(aes(color="MR", y = MR)) +
+  geom_line(aes(color="V8", y = V8)) +
+  geom_line(aes(color="nb", y = nb)) +
+  labs(x="sample") +
+  labs(y="Global Hubness") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("main3_global_hubness",".jpg", sep = ""), plot=g_h_main3, height=4, width = 6, units = "in")
+
+g_h_others <- ggplot(data=global_hubness, aes(x=global_hubness$n)) + 
+  geom_line(aes(color="blm", y = blm)) +
+  geom_line(aes(color="covid", y = covid)) +
+  geom_line(aes(color="primav", y = primav)) +
+  geom_line(aes(color="sjordi", y = sjordi)) +
+  geom_line(aes(color="quar", y = quar)) +
+  labs(x="sample") +
+  labs(y="Global Hubness") 
+  #scale_x_continuous("sample", labels = as.character(total_values_compared_slurm$nro), breaks=total_values_compared_slurm$nro)
+
+ggsave(paste("others_global_hubness",".jpg", sep = ""), plot=g_h_others, height=4, width = 6, units = "in")
+```
+
