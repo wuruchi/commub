@@ -1,0 +1,170 @@
+Dataset:  Nochebuena
+Explained variation per principal component: [0.87931632 0.06894444 0.03998777]
+EPS: 0.1  minPts: 2
+Estimated number of clusters: 82
+Estimated number of noise points: 44
+DB: 2.3287225997060994
+Silhouette: 0.7635035333442336
+Time:  13.084465265274048
+-------------------------------------------------------------
+EPS: 0.1  minPts: 3
+Estimated number of clusters: 66
+Estimated number of noise points: 76
+DB: 2.4995416699013493
+Silhouette: 0.761297576093037
+Time:  12.647287607192993
+-------------------------------------------------------------
+EPS: 0.1  minPts: 5
+Estimated number of clusters: 47
+Estimated number of noise points: 140
+DB: 2.5240244327423067
+Silhouette: 0.769438453689016
+Time:  11.941324949264526
+-------------------------------------------------------------
+EPS: 0.1  minPts: 8
+Estimated number of clusters: 36
+Estimated number of noise points: 209
+DB: 2.7509679130856437
+Silhouette: 0.7639771335374084
+Time:  12.037081480026245
+-------------------------------------------------------------
+EPS: 0.3  minPts: 2
+Estimated number of clusters: 57
+Estimated number of noise points: 30
+DB: 2.1334383714910543
+Silhouette: 0.8731204525787511
+Time:  20.12295699119568
+-------------------------------------------------------------
+EPS: 0.3  minPts: 3
+Estimated number of clusters: 44
+Estimated number of noise points: 56
+DB: 2.4921869577159295
+Silhouette: 0.8716473374312579
+Time:  19.807419538497925
+-------------------------------------------------------------
+EPS: 0.3  minPts: 5
+Estimated number of clusters: 31
+Estimated number of noise points: 97
+DB: 2.259983677707429
+Silhouette: 0.869784045824066
+Time:  20.361246824264526
+-------------------------------------------------------------
+EPS: 0.3  minPts: 8
+Estimated number of clusters: 28
+Estimated number of noise points: 130
+DB: 2.6568710845496857
+Silhouette: 0.8738923726813542
+Time:  19.760899782180786
+-------------------------------------------------------------
+EPS: 0.5  minPts: 2
+Estimated number of clusters: 42
+Estimated number of noise points: 24
+DB: 2.3085123840815305
+Silhouette: 0.8689186463163652
+Time:  19.976190090179443
+-------------------------------------------------------------
+EPS: 0.5  minPts: 3
+Estimated number of clusters: 34
+Estimated number of noise points: 40
+DB: 2.7342639944582574
+Silhouette: 0.8676326869044573
+Time:  19.929007053375244
+-------------------------------------------------------------
+EPS: 0.5  minPts: 5
+Estimated number of clusters: 24
+Estimated number of noise points: 75
+DB: 2.2762268582772682
+Silhouette: 0.8664883338943655
+Time:  19.859010219573975
+-------------------------------------------------------------
+EPS: 0.5  minPts: 8
+Estimated number of clusters: 21
+Estimated number of noise points: 96
+DB: 2.555389020512712
+Silhouette: 0.8715410904815634
+Time:  20.309298515319824
+-------------------------------------------------------------
+EPS: 1  minPts: 2
+Estimated number of clusters: 23
+Estimated number of noise points: 16
+DB: 2.837545659344885
+Silhouette: 0.7378982158754409
+Time:  20.196715354919434
+-------------------------------------------------------------
+EPS: 1  minPts: 3
+Estimated number of clusters: 17
+Estimated number of noise points: 28
+DB: 2.147004701481193
+Silhouette: 0.7369964219195312
+Time:  19.803722381591797
+-------------------------------------------------------------
+EPS: 1  minPts: 5
+Estimated number of clusters: 12
+Estimated number of noise points: 44
+DB: 1.6307664303445153
+Silhouette: 0.7362697085922439
+Time:  20.57162308692932
+-------------------------------------------------------------
+EPS: 1  minPts: 8
+Estimated number of clusters: 10
+Estimated number of noise points: 63
+DB: 1.397934629118486
+Silhouette: 0.735771441631221
+Time:  19.934799194335938
+-------------------------------------------------------------
+EPS: 1.5  minPts: 2
+Estimated number of clusters: 6
+Estimated number of noise points: 5
+DB: 2.187147601291689
+Silhouette: 0.7011695553983627
+Time:  26.22678852081299
+-------------------------------------------------------------
+EPS: 1.5  minPts: 3
+Estimated number of clusters: 6
+Estimated number of noise points: 5
+DB: 2.187147601291689
+Silhouette: 0.7011695553983627
+Time:  26.473879098892212
+-------------------------------------------------------------
+EPS: 1.5  minPts: 5
+Estimated number of clusters: 5
+Estimated number of noise points: 12
+DB: 1.864452326759023
+Silhouette: 0.7057622698123184
+Time:  26.13226342201233
+-------------------------------------------------------------
+EPS: 1.5  minPts: 8
+Estimated number of clusters: 5
+Estimated number of noise points: 24
+DB: 0.4808984315562358
+Silhouette: 0.7046521799708334
+Time:  25.9169979095459
+-------------------------------------------------------------
+EPS: 2  minPts: 2
+Estimated number of clusters: 3
+Estimated number of noise points: 3
+DB: 0.1809909557248415
+Silhouette: 0.959651952031114
+Time:  26.725364923477173
+-------------------------------------------------------------
+EPS: 2  minPts: 3
+Estimated number of clusters: 3
+Estimated number of noise points: 3
+DB: 0.1809909557248415
+Silhouette: 0.959651952031114
+Time:  26.727652549743652
+-------------------------------------------------------------
+EPS: 2  minPts: 5
+Estimated number of clusters: 3
+Estimated number of noise points: 4
+DB: 0.3860865112182237
+Silhouette: 0.9588758146206391
+Time:  26.235292196273804
+-------------------------------------------------------------
+EPS: 2  minPts: 8
+Estimated number of clusters: 3
+Estimated number of noise points: 19
+DB: 0.36538507384674684
+Silhouette: 0.854668125597287
+Time:  27.240652799606323
+-------------------------------------------------------------
