@@ -1,5 +1,7 @@
 # Main
 
+Based on "Individual node's contribution to the mesoscale of complex networks." by Klimm et al.
+
 ./Infomap stores an implementation of the Infomap download from their official page and compiled for a MacOS system.
 
 ./code/data can be disregarded.
